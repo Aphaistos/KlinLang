@@ -40,6 +40,7 @@
 *.app
 
 # Build directories
+bin/
 build/
 Build/
 build-*/
@@ -58,6 +59,14 @@ compile_commands.json
 *.bak
 *.swp
 
+# Visual Studio
+*.vcxproj
+*.vcxproj.filters
+*.vcxproj.user
+*.slnx
+.vs/
+x64/
+
 # vcpkg
 vcpkg_installed/
 
@@ -66,4 +75,5 @@ vcpkg_installed/
 
 # test output & cache
 Testing/
+VirtualKlin/examples
 .cache/
