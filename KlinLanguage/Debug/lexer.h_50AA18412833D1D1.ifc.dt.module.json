@@ -1,0 +1,22 @@
+{
+    "version": 1,
+    "revision": 0,
+    "rules": [
+        {
+            "primary-output": "Debug\\lexer.obj",
+            "outputs": [
+                "Debug\\lexer.h_50AA18412833D1D1.ifc.dt.module.json",
+                "Debug\\lexer.h_50AA18412833D1D1.ifc.dt.d.json",
+                "Debug\\lexer.h.ifc"
+            ],
+            "provides": [
+                {
+                    "logical-name": "P:\\my hobby\\klin\\KlinLanguage\\src\\klin\\lexer.h",
+                    "source-path": "p:\\my hobby\\klin\\klinlanguage\\src\\klin\\lexer.h",
+                    "lookup-method": "absolute"
+                }
+            ],
+            "requires": []
+        }
+    ]
+}

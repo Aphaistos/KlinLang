@@ -1,0 +1,115 @@
+// ============================================================================
+// Manifeste de Module et Importations (ModuleNode, ASKW, AS_ROUTE)
+// ============================================================================
+mod sys::core as core;
+
+imp sys::io;
+imp sys::net::http as http;
+
+// ============================================================================
+// Structures & Unions Alignées (StructNode, UnionNode, PTRTYPE, SLCTYPE)
+// ============================================================================
+
+// Structure alignée à 16 octets avec modificateur volatile
+[16] struct Vector4 {
+    x: u64,
+    y: u64,
+    z: u64,
+    vol w: u64,
+}
+
+// Union native avec pointeurs et tranches qualifies const
+union DataPayload {
+    raw_bytes: []const u8,
+    p_buffer: *const u8,
+    numeric_id: u32,
+}
+
+// ============================================================================
+// Namespaces & Espaces d'Invariants Privés (NamespaceNode)
+// ============================================================================
+::Math::Geometry {
+    
+    // Sub-space d'isolation / fonctions privées
+    ::_Internal {
+        func _fast_inv_sqrt(val number: f32) -> f32 {
+            val i: i32 = (number as i32);
+            return number;
+        }
+    }
+
+    func compute_area(val radius: u64) -> u64 {
+        const PI: u64 = 3_14159;
+        return PI * (radius * radius);
+    }
+}
+
+// ============================================================================
+// Assembleur Enfant (AsmNode, In/Out/Clobber)
+// ============================================================================
+func write_sys_port(val port: u16, val value: u8) {
+    asm {
+        "outb %0, %1"
+        : in(port), in(value)
+        : out("eax")
+        : "memory"
+    }
+}
+
+// ============================================================================
+// Implémentation Principale & Expressions (MatchNode, ControlFlow)
+// ============================================================================
+func main(val argc: i32, val argv: *const string) -> i32 {
+    // Déclarations de variables et littéraux
+    var counter: u64 = 0x00_FF_A0;
+    val flags: u8 = 0b1010_1100;
+    val is_active: bool = true;
+    val null_ref: *const u8 = null;
+    val escape_str: string = "Hello\tWorld\n\0";
+    val char_lit: char = 'K';
+
+    // Opérateurs arithmétiques, logiques et tranches
+    if is_active and (counter >= 100) or (flags != 0) {
+        counter = counter + 1;
+    } else {
+        counter = counter % 2;
+    }
+
+    // Boucle & Slices
+    val slice: []const u8 = "Klin System Language";
+    val sub_slice: []const u8 = slice[0..4];
+
+    while counter > 0 {
+        counter = counter - 1;
+        if counter == 50 {
+            continue;
+        }
+        if counter == 10 {
+            break;
+        }
+    }
+
+    loop {
+        // Boucle infinie
+        break;
+    }
+
+    // Expression Match & Pattern Matching (PatternMatch)
+    val status_code: u16 = 200;
+    match status_code {
+        200 => {
+            io::print("Status OK");
+        },
+        404 => {
+            io::print("Not Found");
+        },
+        _ => {
+            io::print("Unknown Error");
+        }
+    }
+
+    // Conversion explicite avec 'as'
+    val raw_address: usize = (sub_slice as usize);
+
+    return 0;
+}

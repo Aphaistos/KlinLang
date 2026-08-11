@@ -194,7 +194,7 @@ namespace klin {
         PROGRAM,
         IMP,                // imp path::to::mod;
         MOD,
-        NAMESPC,            // ::name { ... }
+        SPACEBUBBLE,        // ::name { ... }
         STRUCT,             // struct Name { ... }
         FIELD,              // field_name: Type (ou avec bitfield)
         UNION,              // union Name { ... }
@@ -614,13 +614,13 @@ namespace klin {
             routes(std::move(routes)),
             declarations(std::move(declarations)) {}
     };
-    struct NamespaceNode : public SyntaxNode {
+    struct SpaceBubbleNode : public SyntaxNode {
         Token dcolon;
         std::string name;
         std::vector<std::unique_ptr<SyntaxNode>> declarations;
 
-        NamespaceNode(Token dcolon, std::string name, std::vector<std::unique_ptr<SyntaxNode>> declarations, SourceLoc start, SourceLoc end)
-            : SyntaxNode(SyntaxKind::NAMESPC, start, end), 
+        SpaceBubbleNode(Token dcolon, std::string name, std::vector<std::unique_ptr<SyntaxNode>> declarations, SourceLoc start, SourceLoc end)
+            : SyntaxNode(SyntaxKind::SPACEBUBBLE, start, end), 
             dcolon(dcolon), 
             name(std::move(name)), 
             declarations(std::move(declarations)) {}

@@ -1,0 +1,133 @@
+{
+  "Import Module": {
+    "prefix": "imp",
+    "body": [
+      "imp ${1:sys::ports};"
+    ],
+    "description": "Importation d'un module Klin"
+  },
+  "Module Declaration": {
+    "prefix": "mod",
+    "body": [
+      "mod ::${1:module_name};"
+    ],
+    "description": "Déclaration d'un manifeste de module"
+  },
+  "Namespace Block": {
+    "prefix": "ns",
+    "body": [
+      "::${1:namespace_name} {",
+      "\t$0",
+      "}"
+    ],
+    "description": "Bloc d'espace de nommage public"
+  },
+  "Private Namespace Block": {
+    "prefix": "nsp",
+    "body": [
+      "::_${1:private_namespace} {",
+      "\t$0",
+      "}"
+    ],
+    "description": "Bloc d'espace de nommage privé"
+  },
+  "Function": {
+    "prefix": "func",
+    "body": [
+      "func ${1:name}(${2:params}) -> ${3:i32} {",
+      "\t-> ${0:val};",
+      "}"
+    ],
+    "description": "Déclaration de fonction standard avec flèche de retour"
+  },
+  "Expression Function": {
+    "prefix": "funce",
+    "body": [
+      "func ${1:name}(${2:params}) => ${0:expression};"
+    ],
+    "description": "Forme courte de fonction monoligne (=>)"
+  },
+  "External Low-Level Function": {
+    "prefix": "_func",
+    "body": [
+      "_func ${1:__sys_outb}(${2:port: u16, val: u8});"
+    ],
+    "description": "Déclaration de fonction système externe ou assembleur"
+  },
+  "Standard Struct": {
+    "prefix": "struct",
+    "body": [
+      "struct ${1:Name} {",
+      "\t${2:field}: ${3:u32},",
+      "\t$0",
+      "}"
+    ],
+    "description": "Déclaration de structure classique"
+  },
+  "Packed Struct": {
+    "prefix": "structp",
+    "body": [
+      "[] struct ${1:Name} {",
+      "\t${2:field}: ${3:u8},",
+      "\t$0",
+      "}"
+    ],
+    "description": "Structure compactée sans rembourrage ([] struct)"
+  },
+  "Aligned Struct": {
+    "prefix": "structa",
+    "body": [
+      "[${1:4096}] struct ${1:Name} {",
+      "\t${2:entries}: [${3:u32}; ${4:1024}],",
+      "\t$0",
+      "}"
+    ],
+    "description": "Structure alignée sur une frontière d'octets ([N] struct)"
+  },
+  "Bitfield Entry": {
+    "prefix": "bitfield",
+    "body": [
+      "${1:field_name}: ${2:u8} : ${3:bits},"
+    ],
+    "description": "Champ de bits natif dans une structure"
+  },
+  "Volatile Memory Access": {
+    "prefix": "vol",
+    "body": [
+      "vol *${1:ADDR} = ${2:value};"
+    ],
+    "description": "Accès mémoire volatile non optimisé pour registres MMIO"
+  },
+  "Slice Creation": {
+    "prefix": "slice",
+    "body": [
+      "var ${1:view}: []${2:u8} = ${3:buffer}[${4:0}..${5:100}];"
+    ],
+    "description": "Création d'une vue slice contiguë"
+  },
+  "For Loop Range": {
+    "prefix": "for",
+    "body": [
+      "for ${1:i} = ${2:0} -> ${3:100} {",
+      "\t$0",
+      "}"
+    ],
+    "description": "Boucle d'intervalle avec syntaxe flèche"
+  },
+  "While Loop": {
+    "prefix": "while",
+    "body": [
+      "while ${1:condition} {",
+      "\t$0",
+      "}"
+    ],
+    "description": "Boucle conditionnelle sans parenthèses obligatoires"
+  },
+  "Inline Assembly": {
+    "prefix": "asm",
+    "body": [
+      "asm { \"${1:nop}\" }"
+    ],
+    "description": "Bloc d'instructions assembleur en ligne"
+  }
+}
