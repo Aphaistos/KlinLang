@@ -1,6 +1,6 @@
 # Klin
 
-**Klin** (or simply **Klin**) is a low-level, imperative, and predictable systems programming language designed to provide total control over hardware and memory. It operates without runtime overhead, garbage collection, or verbose syntax.
+**Klin** is a low-level, imperative, and predictable systems programming language designed to provide total control over hardware and memory. It operates without runtime overhead, garbage collection, or verbose syntax.
 
 Klin compiles directly into **FASM (Flat Assembler)** assembly, producing compact, fast binaries with clear, 1-to-1 machine-instruction predictability.
 
