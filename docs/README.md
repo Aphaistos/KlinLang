@@ -9,19 +9,19 @@
 Cliquez sur les liens ci-dessous pour accéder directement à la documentation détaillée de chaque composant du langage :
 
 ### 01. Type System & Data Structures
-* [**Structures, Enums et Dispositions Mémoire**](docs/01-types/structures-and-enums.md)  
+* [**Structures, Enums et Dispositions Mémoire**](01-types/structures-and-enums.md)  
   *Déclaration de `struct`, `enum`, compactage (`[] struct`), alignement sur mesure (`[N] struct`) et champs de bits (`bitfields`).*
 
 ### 02. Syntax & Control Flow
-* [**Structures de Contrôle**](docs/02-syntax-basics/control-flow.md)  
+* [**Structures de Contrôle**](02-syntax-basics/control-flow.md)  
   *Branchements (`if`/`else`), boucles d'intervalles OCaml-style (`for i = A -> B`), boucles conditionnelles (`while`), boucles infinies (`loop`) et filtrage (`match`).*
 
 ### 04. System Architecture
-* [**Modules, Fichiers et Importations**](docs/04-architecture/modules-and-imports.md)  
+* [**Modules, Fichiers et Importations**](04-architecture/modules-and-imports.md)  
   *Déclaration de modules (`mod`), liaison de fichiers (`->`), organisation en bulles d'espace (`::`) et directives d'importation (`imp`).*
 
 ### 05. Low-Level & Bare-Metal
-* [**Assembleur en Ligne**](docs/05-low-level/inline-asm.md)  
+* [**Assembleur en Ligne**](05-low-level/inline-asm.md)  
   *Syntaxe des blocs `asm { "inst" : inputs : outputs }`, abstractions matérielles d'une ligne (`=>`) et gestion des effets de bord.*
 
 ---
