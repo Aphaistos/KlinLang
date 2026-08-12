@@ -1,34 +1,38 @@
-# Documentation du Langage Klin
+# Documentation Officielle du Langage Klin
 
-**Klin** est un langage de programmation système conçu pour le développement *bare-metal*, la programmation de noyaux et le matériel embarqué. Il privilégie un contrôle explicite de la mémoire, une syntaxe épurée sans verbiage d'attributs et une absence de dépendances cachées.
-
----
-
-## 📚 Sommaire de la Spécification
-
-Cliquez sur les liens ci-dessous pour accéder directement à la documentation détaillée de chaque composant du langage :
-
-### 01. Type System & Data Structures
-* [**Structures, Enums et Dispositions Mémoire**](01-types/structures-and-enums.md)  
-  *Déclaration de `struct`, `enum`, compactage (`[] struct`), alignement sur mesure (`[N] struct`) et champs de bits (`bitfields`).*
-
-### 02. Syntax & Control Flow
-* [**Structures de Contrôle**](02-syntax-basics/control-flow.md)  
-  *Branchements (`if`/`else`), boucles d'intervalles OCaml-style (`for i = A -> B`), boucles conditionnelles (`while`), boucles infinies (`loop`) et filtrage (`match`).*
-
-### 04. System Architecture
-* [**Modules, Fichiers et Importations**](04-architecture/modules-and-imports.md)  
-  *Déclaration de modules (`mod`), liaison de fichiers (`->`), organisation en bulles d'espace (`::`) et directives d'importation (`imp`).*
-
-### 05. Low-Level & Bare-Metal
-* [**Assembleur en Ligne**](05-low-level/inline-asm.md)  
-  *Syntaxe des blocs `asm { "inst" : inputs : outputs }`, abstractions matérielles d'une ligne (`=>`) et gestion des effets de bord.*
+Bienvenue dans la documentation de **Klin**, un langage de programmation système conçu pour le développement *bare-metal*, la programmation système bas niveau et le contrôle explicite des ressources matérielles.
 
 ---
 
-## 🛠️ Principes de Conception
+## Sommaire de la Spécification
 
-1. **Zéro Attribut Verbeux** : L'alignement (`[4096]`) et le compactage (`[]`) s'expriment sous forme de préfixes synthétiques directement sur la structure.
-2. **Gestion Directe du Matériel** : Découpage au bit près (`u8 : 4`) et assembleur en ligne natif sans wrappers complexes.
-3. **Compilation Rapide** : Importation de modules en une seule passe, prévenant les dépendances cycliques sans fichier d'en-tête (*headers*).
-4. **Séparation Fichier / Espace de Nommage** : Les fichiers ne sont que des conteneurs de code organisés physiquement dans des modules logiques via l'instruction de lien `->`.
+### 01. Type System & Layout (`01-types/`)
+* [Structures, Enums & Dispositions Mémoire](01-types/structures-and-enums.md)
+
+### 02. Syntax Basics (`02-syntax-basics/`)
+* [Structures de Contrôle de Flux](02-syntax-basics/control-flow.md)
+* [Fonctions & Abstractions](02-syntax-basics/functions.md)
+
+### 03. Memory & Low-Level Pointers (`03-memory-and-pointers/`)
+* [Pointeurs Bruts & Casts Explictes](03-memory-and-pointers/pointers-and-casts.md)
+* [Slices & Séquences Contiguës](03-memory-and-pointers/slices-and-arrays.md)
+
+### 04. System Architecture (`04-architecture/`)
+* [Modules, Fichiers & Importations](04-architecture/modules-and-imports.md)
+* [Space Bubbles & Hiérarchie de Visibilité](04-architecture/spacebubbles.md)
+* [Déclaration & Méthodes de Structures](04-architecture/structs.md)
+
+### 05. Low-Level Hardware Access (`05-low-level/`)
+* [Assembleur en Ligne (`asm { ... }`)](05-low-level/inline-asm.md)
+
+---
+
+## Vue d'Ensemble des Spécificités
+
+| Domaine | Caractéristique principale |
+| :--- | :--- |
+| **Mémoire & Alignement** | Syntaxe concise `[] struct` (packed) et `[N] struct` (alignement $N$ octets) |
+| **Modules & Code** | Séparation des conteneurs de fichiers (`-> "file.kln"`) et des bulles logiques |
+| **Bare-Metal** | Intégration native des *bitfields* (`x: u8 : 4`) et de l'assembleur en ligne `asm` |
+
+```
